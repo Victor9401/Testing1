@@ -1,0 +1,70 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.6.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+}
+
+
+group = 'bet.olimp'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+
+//jar {
+//    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+//    manifest { attributes 'Main-Class': 'bet.olimp.actions.ActionsApplication' }
+//}
+//
+//jar {
+//    manifest {
+//        attributes "Main-Class": "bet.olimp.actions.ActionsApplication"
+//    }
+//
+//    from {
+//        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+//    }
+//}
+
+//task customFatJar(type: Jar) {
+//    manifest {
+//        attributes 'Main-Class': 'actions.ActionsApplication'
+//    }
+//    baseName = 'all-in-one-jar'
+//    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+//    with jar
+//}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    //  implementation 'org.flywaydb:flyway-core'
+    implementation 'org.springframework.kafka:spring-kafka'
+    implementation("org.postgresql:postgresql")
+    // testCompile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    compile group: 'com.google.guava', name: 'guava', version: '28.1-jre'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    testImplementation 'org.springframework.kafka:spring-kafka-test'
+}
+
+test {
+    useJUnitPlatform()
+}

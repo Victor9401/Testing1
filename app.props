@@ -1,0 +1,10 @@
+kafka.group.id=action_freebet
+kafka.topic= "OLIMP_EXP_BET"
+kafka.server =  1.2.3.4:9091
+secret.token = secret_token
+session.url=http://1.2.3.4:8080/api/v4/user/info
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/action1
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.datasource.username=postgres
+spring.datasource.password=postgres
